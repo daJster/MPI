@@ -1,0 +1,26 @@
+// test mpiCode2 on 3 procs
+
+[0] : hello (p=4)
+[0] : random is 95
+[0] : sending 95 to 1
+[0] : receiving from 3
+[0] : >> I had 95, 1 had 3
+[0] : goodbye
+[2] : hello (p=4)
+[2] : random is 66
+[2] : sending 66 to 3
+[2] : receiving from 1
+[2] : >> I had 66, 3 had 81
+[2] : goodbye
+[1] : hello (p=4)
+[1] : random is 81
+[1] : receiving from 0
+[1] : sending 81 to 2
+[1] : >> I had 81, 2 had 95
+[1] : goodbye
+[3] : hello (p=4)
+[3] : random is 3
+[3] : receiving from 2
+[3] : sending 3 to 0
+[3] : >> I had 3, 0 had 66
+[3] : goodbye
