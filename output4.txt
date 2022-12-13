@@ -1,0 +1,15 @@
+16:27:47 | 1|hello (p=4)
+16:27:47 | 1|received 139654853034059 // getting random long value because we didn't wait for the send to finish/start
+16:27:47 | 1|goodbye
+16:27:47 | 2|hello (p=4)
+16:27:47 | 2|received 140360001167435
+16:27:47 | 2|goodbye
+16:27:47 | 0|hello (p=4)
+16:27:47 | 0|random value is : 80
+16:27:47 | 0|sent 81 to 1
+16:27:47 | 0|sent 82 to 2
+16:27:47 | 0|sent 83 to 3
+16:27:47 | 0|goodbye
+16:27:47 | 3|hello (p=4)
+16:27:47 | 3|received 139665007730763
+16:27:47 | 3|goodbye

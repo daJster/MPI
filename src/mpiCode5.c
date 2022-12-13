@@ -1,16 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi/mpi.h>
-
+#include "utils.h"
 
 int main(int argc, char **argv){
     int num_procs, rank;
 
     MPI_Init(&argc, &argv);
-    MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    printf("%d: Hello (p=%d)\n", rank, num_procs);
-    /* Do many things, all at once*/
+
+    const int ndims = 2;
+    int dims[2] = {4, 2};
+    int periodic[2] = {1, 0};
+    MPI_Comm comm_cart;
+
+    MPI_Cart_create(MPI_COMM_WORLD, // Input Communicator
+                ndims, // Number of cartesian dimensions
+                dims, // Processes per dimesion
+                periodic, // Periodicity per dimension
+                0, // Reorder ranking
+                &comm_cart); // Cartesian communicator
+
+    MPI_Comm_size(comm_cart, &num_procs);
+    MPI_Comm_rank(comm_cart, &rank);
+    int coords[2];
+
+    MPI_Cart_coords(comm_cart, rank, ndims, coords);
+    debug(rank, "coords [ %d ; %d ] \n", coords[0], coords[1]);
+
     MPI_Finalize();
     return 0;
 }

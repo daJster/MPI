@@ -1,0 +1,18 @@
+15:35:55 | 0|hello (p=3)
+15:35:55 | 0|received 2
+15:35:55 | 0|sleeping 2s
+15:35:57 | 0|Enter Barrier
+15:36:1 | 0|Leave Barrier
+15:36:1 | 0|goodbye
+15:35:55 | 1|hello (p=3)
+15:35:55 | 1|received 2
+15:35:55 | 1|sleeping 4s
+15:35:59 | 1|Enter Barrier
+15:36:1 | 1|Leave Barrier
+15:36:1 | 1|goodbye
+15:35:55 | 2|hello (p=3)
+15:35:55 | 2|broadcasting 2
+15:35:55 | 2|sleeping 6s
+15:36:1 | 2|Enter Barrier
+15:36:1 | 2|Leave Barrier
+15:36:1 | 2|goodbye

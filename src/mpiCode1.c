@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi/mpi.h>
+#include "utils.h"
 
 /*Basic MPI program*/
 
