@@ -4,7 +4,8 @@
 #include "utils.h"
 
 
-// Send receive example TD2
+//Shout it out to the whole world TD3
+
 int main(int argc, char **argv){
     int num_procs, rank;
 
@@ -13,7 +14,7 @@ int main(int argc, char **argv){
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
     if (num_procs < 2){
-        debug(rank, "This application must be run with 2 MPI processes, not %d\n", num_procs);
+        debug(rank, "This application must be run with at least 2 MPI processes, not %d\n", num_procs);
         MPI_Abort(MPI_COMM_WORLD, -1);
     }
 
@@ -21,13 +22,11 @@ int main(int argc, char **argv){
 
     if (rank == 0){
         int snd_value = 1239;
-        debug(rank, "sending value : %d\n", snd_value);
-        MPI_Send(&snd_value, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
-        MPI_Barrier(MPI_COMM_WORLD);
+        debug(rank, "Broadcasting value : %d\n", snd_value);
+        MPI_Bcast(&snd_value, 1, MPI_INT, rank, MPI_COMM_WORLD);
     } else {
-        MPI_Barrier(MPI_COMM_WORLD);
         int rcv_value = 0;
-        MPI_Recv(&rcv_value, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
+        MPI_Bcast(&rcv_value, 1, MPI_INT, 0, MPI_COMM_WORLD);        
         debug(rank, "receiving value : %d\n", rcv_value);
     }
 

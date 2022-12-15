@@ -8,19 +8,22 @@ int main(int argc, char **argv){
 
     MPI_Init(&argc, &argv);
 
-    const int ndims = 2;
-    int dims[2] = {4, 2};
-    int periodic[2] = {1, 0};
+    int ndims = 2;
+    int dims[2] = {0, 1};
+    MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
+    // Ask MPI to decompose our processes in a 2D cartesian grid for us
+    MPI_Dims_create(num_procs, ndims, dims);
+
+    int periods[2] = {1, 0};
     MPI_Comm comm_cart;
 
     MPI_Cart_create(MPI_COMM_WORLD, // Input Communicator
                 ndims, // Number of cartesian dimensions
                 dims, // Processes per dimesion
-                periodic, // Periodicity per dimension
+                periods, // Periodicity per dimension
                 0, // Reorder ranking
                 &comm_cart); // Cartesian communicator
 
-    MPI_Comm_size(comm_cart, &num_procs);
     MPI_Comm_rank(comm_cart, &rank);
     int coords[2];
 

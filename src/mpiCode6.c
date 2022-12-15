@@ -4,6 +4,7 @@
 #include "utils.h"
 
 
+// Hello world TD 1
 
 int main(int argc, char **argv){
     int num_procs, rank;
@@ -11,8 +12,9 @@ int main(int argc, char **argv){
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    printf("%d: Hello (p=%d)\n", rank, num_procs);
-    /* Do many things, all at once*/
+
+    printf("\"Hello World!\" from MPI process %d, we are %d MPI processes.\n", rank, num_procs);
+
     MPI_Finalize();
-    return 0;
+    return EXIT_SUCCESS;
 }
